@@ -18,7 +18,7 @@ snopf_manager:		$(manager_path)snopf_manager
 browser_driver:		$(driver_path)snopf_browser_driver
 
 $(cmd_path)snopf_cmd:	$(deps_all) $(deps_cmd)
-	pyinstaller snopf_cmd.py --distpath=$(dist_path) --workpath=$(work_path)/snopf_cmd --specpath=$(work_path) --name=snopf_cmd --add-data '../pc/wordlist/english.txt:wordlist/' --noconfirm
+	pyinstaller snopf_cmd.py --distpath=$(dist_path) --workpath=$(work_path)/snopf_cmd --specpath=$(work_path) --name=snopf_cmd --add-data '../pc/wordlist/english.txt:wordlist/' --noconfirm  --hidden-import 'packaging.requirements' --hidden-import 'pkg_resources.py2_warn'
 	git rev-parse HEAD > $(cmd_path)commit_hash.txt
 
 $(manager_path)snopf_manager:	$(deps_all) $(deps_qt)
